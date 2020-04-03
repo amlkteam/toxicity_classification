@@ -5,7 +5,7 @@
 
 ### Work Distribution, Contribution and Quality
 
-Each member is expected to work 9 hours per week, which is 108 hours in total for the project($9*3*4$), and our project will be distributed in a fair and equitable way. 
+Each member is expected to work 9 hours per week, which is 108 hours in total for the project $ \dot(3*9*4) $ , and our project will be distributed in a fair and equitable way. 
 Every group member is expected to contribute an equal amount of effort and time into the project. We will use daily "stand-ups" and try to divide tasks each week in a fair way in order to make sure that everyone in the group will spend roughly the same amount of time on the project. We are flexible with the assignments If one member takes more time which is not supposed to be, we will keep track of what's going on and make changes accordingly. Each member is expected to contribute an equal effort to make sure the work quality and members could send a brief message on Slack group chat to share information and keep other members updated. 
 
 ### Online Collaboration and Communication
@@ -18,7 +18,7 @@ The format of the meetings is basically through Slack and formal group discussio
 
 Since each person has their own lives, we are not expected team member either to work during weekends because of family obligations or be available 24/7. We will communicate each other about project tasks each week through Slack. We will make clear for each members' task and the deliveries at the beginning of each week. Under the current situation, it is hard to have the meetings in person, but we would like to try our best to finish weekly milestone on Friday. Therefore, if any group member has some questions and need to raise in time, others will have time to help out.
 
-### Code of Cconduct and Project Governance
+### Code of Conduct and Project Governance
 
 We will be entirely democratic throughout the project, and we will not have a single project manager. We will follow the majority vote rule to make decisions together. Since we have three team members, that is to say, it allows us to vote for issues if there is a disagreement within the team.  Meeting online each Tuesday from 14:00 to 16:00 is elementary during the COLX 585 lab period through slack. Absence for some reasons is acceptable. 
 
