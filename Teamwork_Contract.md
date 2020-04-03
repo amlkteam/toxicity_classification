@@ -5,7 +5,7 @@
 
 ### Work Distribution, Contribution and Quality
 
-Each member is expected to work 9 hours per week, which is 108 hours in total for the project(9*3*4), and our project will be distributed in a fair and equitable way. 
+Each member is expected to work 9 hours per week, which is 108 hours in total for the project($9*3*4$), and our project will be distributed in a fair and equitable way. 
 Every group member is expected to contribute an equal amount of effort and time into the project. We will use daily "stand-ups" and try to divide tasks each week in a fair way in order to make sure that everyone in the group will spend roughly the same amount of time on the project. We are flexible with the assignments If one member takes more time which is not supposed to be, we will keep track of what's going on and make changes accordingly. Each member is expected to contribute an equal effort to make sure the work quality and members could send a brief message on Slack group chat to share information and keep other members updated. 
 
 ### Online Collaboration and Communication
