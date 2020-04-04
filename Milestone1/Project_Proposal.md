@@ -3,7 +3,7 @@
 
 ## Introduction:
 
-We would like to do toxic comments identification task, which is more like a sentiment analysis task in nature, that we will train neural models to learn about what words/phrases may be insulting, threatening or hurtful to others. The models will take in a sequence of text, and output a binary classification of whether an "toxic" element is found in the sequence, and if positive, also output a multi-label classification on the toxic comment.
+We would like to do toxic comments classification task, which is more like a sentiment analysis task in nature, that we will train neural models to learn about what words/phrases may be insulting, threatening or hurtful to others. The models will take in a sequence of text, and output a binary classification of whether a "toxic" element is found in the sequence, and if positive, also output a multi-label classification on the toxic comment.
 
 ## Motivation and Contributions
 
