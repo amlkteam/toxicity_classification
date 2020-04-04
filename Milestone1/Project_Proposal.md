@@ -1,5 +1,5 @@
 
-# Project proposal -- Jigsaw Multilingual Toxic Comment Classification
+# Project proposal -- Jigsaw Toxic Comment Classification
 
 ## Introduction:
 
