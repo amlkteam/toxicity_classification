@@ -3,9 +3,9 @@
 
 
 # You have to uncomment the following three lines if you are running this on Colab
-!pip install transformers
-from google.colab import drive
-drive.mount('/content/drive', force_remount=True)
+#!pip install transformers
+#from google.colab import drive
+#drive.mount('/content/drive', force_remount=True)
 
 import time
 import torch
