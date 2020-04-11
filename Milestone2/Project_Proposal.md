@@ -52,9 +52,11 @@ Afterwards, we switched to a better architecture that can train 1 epoch in just 
 
 And then we tried finetuning hyperparameters in the following ranges according to suggestions of the original BERT paper:
 
+```
 • Batch size: 16, 32
 • Learning rate (Adam): 5e-5, 3e-5, 2e-5
 • Number of epochs: 2, 3, 4
+```
 
 Finetuning results with 6-labels-in-one-go architecture are surprising very similar and hovering between 0.89 - 0.90, with best combination of (Batch_size 32, Num_epochs 2 and learning rate 2e-5) at 0.9065.  
 
@@ -65,7 +67,7 @@ We used Macro-average version of F1-score due to imbalanced class nature of data
 - Batch size 16 
 
 Num_epochs \learning rate | 5e-05 | 3e-05| 2e-05
-----------------------------------------------------------
+================================================================
 2 Epochs   | 0.9039604591274064 | 0.8986270303938924 | 0.8995537473728882
 3 Epochs   | 0.9004183493704224  | 0.895936492822745 | 0.8965980383958093
 4 Epochs   | 0.898889561924533  | 0.8978343413588961 | 0.8941328374758069
@@ -73,7 +75,7 @@ Num_epochs \learning rate | 5e-05 | 3e-05| 2e-05
 - Batch size 32 also achieves best result with 2 epochs
 
 Num_epochs \learning rate |  2e-05
-----------------------------------------------------------
+=========================================
 2 Epochs | 0.9065137498217699
 3 Epochs | 0.9037581936678408
 4 Epochs | 0.9033286094395687
