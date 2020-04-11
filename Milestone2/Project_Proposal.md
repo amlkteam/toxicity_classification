@@ -75,7 +75,7 @@ Num_epochs \learning rate |  2e-05
 3 Epochs | 0.9037581936678408
 4 Epochs | 0.9033286094395687
 
-Finetuning results with 6-labels-in-one-go architecture are surprising very similar, always hovering between 0.89 - 0.90, with best combination of `(Batch_size 32, Num_epochs 2 and learning rate 2e-5)` at 0.9065.  
+Finetuning results with 6-labels-in-one-go architecture are surprising very similar, always hovering between 0.89 - 0.90, with `best combination of (Batch_size 32, Num_epochs 2 and learning rate 2e-5) at 0.9065`.  
 
 We used `Macro-average version` of F1-score due to imbalanced class nature of data, as the micro-average F1 is too lenient in giving out high scores even when some minority classes score low marks. 
 
@@ -90,9 +90,9 @@ There are a few papers published in recent 3 years which tested different machin
 Adding on the above papers from milestone1, this week we look at some more relevant papers that used BERT embeddings and finetuning onto the task of toxic comment classification. 
 
 - In `"Automatic Toxic Comment Detection Using DNN"` by D'Sa et al.(link: https://arxiv.org/ftp/arxiv/papers/1911/1911.08395.pdf) published in 2020, authors tried to apply three different pretrained word representations including BERT onto feature-based CNN and RNN models with an regression-based approach.  A threshold on
-the predicted score is used to decide if the comment is toxic or not.The dataset used is 160k comments from the Wikipedia Detox project. Another BERT fine-tuning approach achieves 78.2 F1-score, better than feature-based models that used BERT embeddings. Authors also tested `robustness` of the feature-based models by adding a toxic word like 'fuck' or a healthy word like 'love' to each comment of test set, and found out that `model with BERT embedding is least susceptible to the word appending attacks`.  
+the predicted score is used to decide if the comment is toxic or not.The dataset used is 160k comments from the Wikipedia Detox project, similar to our dataset. A BERT fine-tuning approach by authors achieved 78.2 F1-score, better than feature-based models that used BERT embeddings. Authors also tested `robustness` of the feature-based models by adding a toxic word like 'fuck' or a healthy word like 'love' to each comment of test set, and found out that `model with BERT embedding is least susceptible to word appending attacks`.  
 
-- In `"Offensive Language Identification and Categorization with Perspect and BERT"` by Pavlopoulos, Androutsopoulos, Thain and Dixon published in 2019(link: https://www.aclweb.org/anthology/S19-2102.pdf), authors observed that `Perspective`(a CNN trained by Jigsaw and Google on milions of user comments from different online publishers based on GloVe embeddings) performed `better than BERT finetuning in detecting toxicity`, at macro F1-score of 0.7933 and 0.7705, respectively. But `BERT performed better in categorizing the offensive type`(threats, insults, profanity, identity attack etc) with a 0.6817 F1-score, exceeding Perspective's 0.4785 by wide margin . Authors also note that subtasks like threat identication score lower than the toxicity identification task.
+- In `"Offensive Language Identification and Categorization with Perspect and BERT"` by Pavlopoulos, Androutsopoulos, Thain and Dixon published in 2019(link: https://www.aclweb.org/anthology/S19-2102.pdf), authors observed that `Perspective`(a CNN trained by Jigsaw and Google on milions of user comments from different online publishers based on GloVe embeddings) performed `better than BERT finetuning in detecting toxicity`, at macro F1-score of 0.7933 and 0.7705, respectively. Authors also note that refined subtasks like threat identication scored lower than the toxicity identification task. But `BERT performed better in categorizing the offensive type`(threats, insults, profanity, identity attack etc) with a 0.6817 F1-score, exceeding Perspective's 0.4785 by wide margin. 
  
 
 ## Evaluation:
