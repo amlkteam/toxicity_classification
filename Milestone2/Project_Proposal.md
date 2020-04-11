@@ -39,8 +39,6 @@ We feed the feed the tokens to our Neural Network which outputs a vector of leng
 
 While making actual predictions we take the output from the Linear Layer and pass it through a Sigmoid function and then depending on whether the value at a particular position of the vector is above or below 0.5 we classify it as a 1 or 0 (>0.5 ~ 1 and <0.5 ~ 0). These ones and zeros eseentially mean if the comment can be attributed to the label at that position.
 
-Regarding to the training process, after we finish data preprocessing, we find that there is a class imbalance problem for our train dataset. We have around 15,000 toxic comments under six categories, but have a huge amount for non-toxic comments. To prevent the imbalance problem, we choose random pick 15,000 comments to balance our class. Then we use 20,000 sentences to train our model, 5000 for development set and the remaining about 5000 for test the performance of our classifier. We choose BERT-Base Multilingual Cased as our pre-trained model and add an untrained linear layer on BERT as our new model to train our classification task. After tuning our hyperparameters on several experiments, we select learning rare of 2e-5, batch size of 32 and epoch of 1. Besides, it takes 3 to 5 minutes per epoch to train our model but we achieve F1 score of 0.905 for our train dataset and 0.908 for test dataset.
-
 ## Previous Works
 
 There are a few papers published in 2018 which tested different machine learning models on toxic comment classification that can serve as our basis for further exploration.
