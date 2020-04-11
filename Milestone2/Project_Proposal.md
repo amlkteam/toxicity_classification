@@ -3,13 +3,13 @@
 
 ## Introduction:
 
-We would like to do toxic comments classification task, which is more like a sentiment analysis task in nature, that we will train neural models to learn about what words/phrases may be insulting, threatening or hurtful to others. The models will take in a sequence of text, and output a binary classification of whether a "toxic" element is found in the sequence, and if positive, also output a multi-label classification on the toxic comment.
+We have done the Jigsaw Toxic Comments Classification task, which is a text classification task in nature. We have trained a neural model to learn about what words/phrases may be insulting, threatening or hurtful to others. The model takes in a sequence of text, and outputs a binary vector of length 6 which denotes which labels the text can be attributed to among `toxic`, `server_toxic`, `obscene`, `threat`, `insult` and `identity_hate`.
 
 ## Motivation and Contributions
 
 The project is primarily socially-motivated. The number of people chatting and commenting and just writing content on the Internet have increased exponentially over the past decade. A lot of people do use toxic language which should be dealt by first detecting if it is toxic and then dealing with it some way like hiding it or just deleting it. The goal of this project is to detect such toxic comments/messages and also classify the type of toxicity.
 
-We hope that our system will be a fine-tuned version of one of the popular pretrained models thatworks really well for this specific task. We want to make an end to end library out of it as well where a sentence can be passed along and the labels can be easily assigned to it. If we have the time we would also want to explore the model interpretability and try to analyse why the model is assigning different labels to different sentences.
+We hope that our system is a fine-tuned version of one of the popular pretrained models(BERT) that works really well for this specific task and gives good multi-label performance. 
 
 
 ## Data
@@ -18,16 +18,28 @@ We will be using the dataset from the Kaggle Toxic Comment Classification.
 
 The training set has 159571 comments and every comment has 6 labels associated with it namely `toxic`, `server_toxic`, `obscene`, `threat`, `insult` and `identity_hate`. This is a multi-label dataset which means that a comment can have more than one class assigned to it. The assignments are represented by a 0 or 1 for each which class. 0 means the comment is not attributed to that class and 1 means that the comment is attributed to that specific task.
 
-Even though there are 159571 comments in total there is a high level of class imbalance and most of the sentences cannot be attributed to any of the classes which is why we might have to use negative sampling to deal with the problem.
+Even though there are 159571 comments in total there is a high level of class imbalance and most of the sentences cannot be attributed to any of the classes which is why we have used negative sampling to deal with the problem. The total number of comments which has atleast one kind of toxicity is approximately 15000. So we have selected those comments and negatively sampling another 15000 comments where the comment cannot be attributed to any kind of toxicity. So in total we ended up with a dataset of around 30,000 comments. We have split that dataset into three parts - train set(20000 comments), validation set(20000 comments) and test set(5294 comments).
 
 The data is in English language and it is just stored in CSV format.
 
+## Challenges
+
+One of the challenges we face is that this is not a binary or a simple multi-class classification problem where every comment can only be attributed to one class. A comment can be attributed to more than one class which meant we cannot use softmax in a typical way. The immediate solution was to have 6 different models where every model will be a binary classifier for one class predicting if the comment can or cannot be attributed to that specific class. However, this was very inefficient from a computation standpoint since we would have to use 6 times the memory and storage compared to a single model and also spend way more time iterating on each of the models. The more non-trivial solution we came up with is to use a single newtork for all classifying all the labels and use the BCELoss along with the Sigmoid activation function to predict and calculate the loss in one go.
 
 ## Engineering
 
-We implement our model on Google Colab since none of us have access to GPU and it is not feasible to iterate on experiments that are run on a CPU. Our main task for this project is to process multi-label text classification with the latest transformer architectures and pre-trained models like `BERT. After we finish data preprocessing, we find that there is a class imbalance problem for our train dataset. We have around 15,000 toxic comments under six categories, but have a huge amount for non-toxic comments. To prevent the imbalance problem, we choose random pick 15,000 comments to balance our class. Then we use 20,000 sentences to train our model, 5000 for development set and the remaining about 5000 for test the performance of our classifier. Generally, we choose BERT-Base Multilingual Cased as our pre-trained model and add an untrained linear layer on BERT as our new model to train our classification task. After tuning our hyperparameters on several experiments, we select learning rare of 2e-5, batch size of 32, epoch of 1 and `binary_cross_entropy_with_logits` as loss function. Besides, it takes 3 to 5 minutes per epoch to train our model but we achieve F1 score of 0.905 for our train dataset and 0.908 for test dataset.
+We have used Google Colab to run the experiments since none of us have access to GPU and it is not feasible to iterate on experiments that are run on a CPU. 
+Since we know pretrained language models are quite efficient in doing a lot of downstream NLP tasks we have chosen to use BERT(Bidirectional Encoder Representations from Transformers) for our experiments. The [Transformers](https://huggingface.co/transformers/) library has been used to get these BERT Embeddings. 
 
-Regarding to the framework, we use the transformers library by Hugging Face which is based off PyTorch. Link to the transformers library - [Click Here](https://huggingface.co/transformers/)
+We have used the BertTokenizer to tokenize the comments and then add special tokens indicating the start and end of the sequence and also added padding to make the comment of a pre-determind lenght of 84 tokens.
+
+Our Neural Network consists of the BERT layer from Transformers and then a dropout layer with probability of 0.1. The dropout layer is followed by a Lineary layer with output size of 6 because that is the total number of labels the comment can be attributed to.
+
+We feed the feed the tokens to our Neural Network which outputs a vector of length 6. We then pass this output through a Sigmoid layer which squishes the values in between 0 and 1 and then we use BCELoss to calculate the combined loss of all the labels. We actually use the BCEWithLogitsLoss as the loss function because it combines both the sigmoid activation and BCELoss together and gives better numerical stability.
+
+While making actual predictions we take the output from the Linear Layer and pass it through a Sigmoid function and then depending on whether the value at a particular position of the vector is above or below 0.5 we classify it as a 1 or 0 (>0.5 ~ 1 and <0.5 ~ 0). These ones and zeros eseentially mean if the comment can be attributed to the label at that position.
+
+Regarding to the training process, after we finish data preprocessing, we find that there is a class imbalance problem for our train dataset. We have around 15,000 toxic comments under six categories, but have a huge amount for non-toxic comments. To prevent the imbalance problem, we choose random pick 15,000 comments to balance our class. Then we use 20,000 sentences to train our model, 5000 for development set and the remaining about 5000 for test the performance of our classifier. We choose BERT-Base Multilingual Cased as our pre-trained model and add an untrained linear layer on BERT as our new model to train our classification task. After tuning our hyperparameters on several experiments, we select learning rare of 2e-5, batch size of 32 and epoch of 1. Besides, it takes 3 to 5 minutes per epoch to train our model but we achieve F1 score of 0.905 for our train dataset and 0.908 for test dataset.
 
 ## Previous Works
 

@@ -11,3 +11,5 @@ Nilan, Claire, Amy
 - [Project proposal](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone1/Project_Proposal.md)
 - [Teamwork contract](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone1/Teamwork_Contract.md)
 
+####  Milestone2 deliverables
+- [Project proposal](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone2/Project_Proposal.md)
