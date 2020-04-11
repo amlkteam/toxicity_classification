@@ -68,6 +68,7 @@ We used Macro-average version of F1-score due to imbalanced class nature of data
 - Batch size 16 
 
 Num_epochs \learning rate | 5e-05 | 3e-05| 2e-05
+|---|---|---|---|
 2 Epochs   | 0.9039604591274064 | 0.8986270303938924 | 0.8995537473728882
 3 Epochs   | 0.9004183493704224  | 0.895936492822745 | 0.8965980383958093
 4 Epochs   | 0.898889561924533  | 0.8978343413588961 | 0.8941328374758069
@@ -75,6 +76,7 @@ Num_epochs \learning rate | 5e-05 | 3e-05| 2e-05
 - Batch size 32 also achieves best result with 2 epochs
 
 Num_epochs \learning rate |  2e-05
+|---|---|
 2 Epochs | 0.9065137498217699
 3 Epochs | 0.9037581936678408
 4 Epochs | 0.9033286094395687
