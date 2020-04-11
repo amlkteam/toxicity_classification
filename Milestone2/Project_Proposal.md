@@ -43,15 +43,13 @@ While making actual predictions we take the output from the Linear Layer and pas
 
 At first, we tried to train 6 binary classifiers, one for toxicity, and five for the remaining toxicity sub-categories, using the full train.csv which contains 159571 comments. However, training merely one epoch with a lower-memory-consuming bert-base-uncased embedding already took an hour to finish, though the validation result on dev-set is quite good at a macro F1-score of 0.8844. 
 
-It would be too time-consuming to train the rest 5 binary classifiers with all the 159571 comments, and a workaround intended was to trained the subcategory classifiers only on the 15294 comments that were annotated to be toxic, yet the results are much worse for subcategories that have very few positive labels, due to class imbalance problem. For example, the "identity_hate" column only has 1405 positive examples among all 15294 toxic comments, and therefore F1-score on dev-set was bad at 0.4776 with 'bert-base-uncased' embedding, while much better at 0.7981 with 'bert-large-uncased' embedding. But due to Colab memory constraint, we cannot trained all classifiers with 'bert-large-uncased'. 
+It would be too time-consuming to train the rest 5 binary classifiers with all the 159571 comments, and a workaround intended was to train the subcategory classifiers only on the 15294 comments that were annotated to be toxic, yet the results are much worse for subcategories that have very few positive labels, due to class imbalance problem. For example, the "identity_hate" column only has 1405 positive examples among all 15294 toxic comments, and therefore F1-score on dev-set was bad at 0.4776 using 'bert-base-uncased' embedding, while much better at 0.7981 using 'bert-large-uncased' embedding(perhaps addressing out-of-vocabulary problem). But due to Colab memory constraint, we cannot trained all classifiers with 'bert-large-uncased'. 
 
 Some attempts to train other subcategories including insult, obscene and severe_toxic achieved validation F1-score between 0.7132 and 0.8159 after 3 epochs of training, which are far worse than the training result on toxicity that were trained on full data. Initial results were recorded [here](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone2/Training%20Results%20Record%20of%20BERT-finetuning%20on%20Toxic%20Comment%20Classification.ipynb)
 
+Afterwards, we switched to a better `architecture that can train 1 epoch in just 3-6 minutes`, and can train 6 labels for each sentence in-one-go. Amazingly, new model achieved around 0.90 macro-F1 score on our test set that contained about 5000 sentences(sliced from original train.csv), through addressing class imbalance problem by random sampling of non-toxic sentences.  
 
-Afterwards, we switched to a better `architecture that can train 1 epoch in just 3-6 minutes`, training 6 labels for each sentences in one-go. Amazingly, it achieved around 0.90 macro-F1 score on our test set that contained about 5000 sentences(split from original train.csv), though addressing class imbalance problem by random sampling of non-toxic sentences.  
-
-And then we tried finetuning hyperparameters in the following ranges according to suggestions of the original BERT paper:
-
+And then we tried finetuning hyperparameters in the following ranges according to suggestions in the original BERT paper:
 ```
 • Batch size: 16, 32
 • Learning rate (Adam): 5e-5, 3e-5, 2e-5
@@ -77,9 +75,9 @@ Num_epochs \learning rate |  2e-05
 3 Epochs | 0.9037581936678408
 4 Epochs | 0.9033286094395687
 
-Finetuning results with 6-labels-in-one-go architecture are surprising very similar and hovering between 0.89 - 0.90, with best combination of `(Batch_size 32, Num_epochs 2 and learning rate 2e-5)` at 0.9065.  
+Finetuning results with 6-labels-in-one-go architecture are surprising very similar, always hovering between 0.89 - 0.90, with best combination of `(Batch_size 32, Num_epochs 2 and learning rate 2e-5)` at 0.9065.  
 
-We used `Macro-average version` of F1-score due to imbalanced class nature of dataset as the micro-average F1 is too lenient in giving out high scores even when some minority classes score low marks. 
+We used `Macro-average version` of F1-score due to imbalanced class nature of data, as the micro-average F1 is too lenient in giving out high scores even when some minority classes score low marks. 
 
 ## Previous Works
 
