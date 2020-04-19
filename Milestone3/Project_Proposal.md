@@ -102,7 +102,9 @@ the predicted score is used to decide if the comment is toxic or not.The dataset
 
 ## Evaluation:
 
-We prepare 5,494 sentences in total to evaluate the performance of our model. The classifier is pretty good based on the F1 score and it reaches 0.90 in our test dataset. We processed 10 epochs to train our model and get the best performance on epoch 9.  In order to find the rest of errors we perform the error analysis based on the incorrect predictions. Precision score for non_toxic is 0.96, which is higher than precision for toxic class under six categories which refer to toxic, severe_toxic, obscene , threat, insult and identity_hate. Besides, based on the classification report below, we can see that the difference between precision and recall for for non-toxic class is very small. That is to say, our model has better performance on predicting non-toxic comments rather than toxic comments. Please refer to more detailed statistical results [Here](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone2/test_analysis.ipynb). 
+We prepare 5,494 sentences in total to evaluate the performance of our model. The classifier is pretty good based on the F1 score and it reaches 0.90 in our test dataset. We processed 10 epochs to train our model and get the best performance on epoch 9.  In order to find the rest of errors we perform the error analysis based on the incorrect predictions. Precision score for non_toxic is 0.96, which is higher than precision for toxic class under six categories which refer to toxic, severe_toxic, obscene , threat, insult and identity_hate. 
+
+Besides, based on the classification report below, we can see that precision for non-toxic class is 0.961 and 0.854 for toxic class. The recall is 0.969 for non-toxic but 0.820 for toxic comments. The difference between precision of 0.961 and recall of 0.969 for for non-toxic class is very small. That is to say, our model has better performance on predicting non-toxic comments rather than toxic comments. Please refer to more detailed statistical results [Here](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone2/test_analysis.ipynb). 
 
 ![classification](classification.png)
 
@@ -112,7 +114,7 @@ Besides, we take one sentence as an example to process attention analysis.
 
 ![attetion](attetion.png)
 
-Based on the attention analysis visualization,  as we can observe that X-axis is the word tokens/key which attention is being paid, and Y-axis is number of head. The intensity of color blue shows attention weights. As we can observe, head of 7 has more attention for each token compare with other heads, and some bad words in this sentence has more attention weights between 0.6 and 0.8, which can be a good indicator to predict the comment as toxic. General speaking, between head of 5 and head of 9 more attention is paid and our model forms a strong composite representations to understand language.
+Based on the attention analysis visualization,  as we can observe that X-axis is the word tokens/key which attention is being paid, and Y-axis is number of head. The intensity of color blue shows attention weights. As we can observe, head of 7 has more attention for each token compare with other heads, and some bad words in this sentence have more attention weights between 0.6 and 0.8, which can be a good indicator to predict the comment as toxic. General speaking, between head of 5 and head of 9 more attention is paid and our model forms a strong composite representations to understand language.
 
 
 
