@@ -14,7 +14,7 @@ We hope that our system is a fine-tuned version of one of the popular pretrained
 
 ## Data
 
-We will be using the dataset from the Kaggle Toxic Comment Classification.
+We used the dataset from the Kaggle Toxic Comment Classification.
 
 The training set has 159571 comments and every comment has 6 labels associated with it namely `toxic`, `server_toxic`, `obscene`, `threat`, `insult` and `identity_hate`. This is a multi-label dataset which means that a comment can have more than one class assigned to it. The assignments are represented by a 0 or 1 for each which class. 0 means the comment is not attributed to that class and 1 means that the comment is attributed to that specific task.
 
@@ -42,7 +42,7 @@ While making actual predictions we take the output from the Linear Layer and pas
 
 To compare our results with a baseline model we have trained a unidirectional LSTM model using the same processing steps and same loss functions and as expected the BERT model performs aproximately 4% better than the baseline LSTM model
 
-## Tentative Model Training Results:
+## Model Training Results:
 
 At first, we tried to train 6 binary classifiers, one for toxicity, and five for the remaining toxicity sub-categories, using the full train.csv which contains 159571 comments. However, training merely one epoch with a lower-memory-consuming bert-base-uncased embedding already took an hour to finish, though the validation result on dev-set is quite good at a macro F1-score of 0.8844. 
 
@@ -80,6 +80,17 @@ Num_epochs \learning rate |  2e-05
 
 Finetuning results with 6-labels-in-one-go architecture are surprising very similar, always hovering between 0.89 - 0.90, with `best combination of (Batch_size 32, Num_epochs 2 and learning rate 2e-5) at 0.9065`.  
 
+Further hyperparameter tuning on `max_grad_norm` and `warmup_proportion` also produces testset macro-average F1 between 0.89 -0.905, with best combination of (max_grad_norm at 0.7 and warmup_proportion at 0.05), building on the base combination of (Batch_size 32, Num_epochs 2 and learning rate 2e-5). This could mean our model is quite robust. The table below show some minor variations(highest score is not as good as 0.9065 this time probably due to some randomness in model runs):
+
+Max_grad_norm\ Warmup_ratio | 0.05 | 0.1 | 0.15 | 0.2 |
+|----------------------------|------|-----|------|-----|
+0.7 | 0.9050485248498495|0.9031651974293001| 0.9014698830043779 | 0.8991474259894763
+0.8 | 0.9009134450233417 | 0.899292643921745 | 0.8999045018715068 | 0.8997392516797682
+0.9 | 0.9012246193274818 | 0.8985438406056665 | 0.8982796102199433 | 0.8995456641791317
+1.0 | 0.9006945421406302 | 0.9008547674938299 | 0.900064222790183 | 0.8997090852576312
+1.1 | 0.8997612023395669 | 0.8979497807415765 | 0.897922467059006 | 0.8987948909936838
+
+
 We used `Macro-average version` of F1-score due to imbalanced class nature of data, as the micro-average F1 is too lenient in giving out high scores even when some minority classes score low marks. 
 
 Our baseline model gives us a Macro-F1 Score of `0.86199` after training for 5 epochs. We have used a batch size of `32` for the training and the default learning rate of `0.001` using the Adam optimizer.
@@ -92,7 +103,7 @@ There are a few papers published in recent 3 years which tested different machin
 
 - In `"Challenges for Toxic Comment Classification: An In-Depth Error Analysis"` by Betty van Aken et al.([link](https://www.researchgate.net/publication/327345300_Challenges_for_Toxic_Comment_Classification_An_In-Depth_Error_Analysis)), authors point out that main challenges of toxic comment classification include `long-range dependencies`, `(intentionally) misspelled and idiosyncratic out-of-vocabulary words`, `class imbalance problem` and `high variance in data/inconsistency in labeling`. Authors applied an ensemble approach, combining strong classifiers of Logistic Regression, bidirectional RNN, bidirectional GRU with Attention layer and CNN, with pretrained word embeddings from Glove and sub-word embeddings from FastText. `Bidirectional GRU with Attention` outperformed other models but ensemble approach achieved even higher F1 scores(0.791 on wikipedia comments and 0.793 on another tweets dataset). For multi-label comment classification task, authors found that ensembling is especially effective on the sparse classes "threat" and "hate". In the follow-up error analysis, this paper discusses the remaining major prediction errors came from a few areas: `incorrect original labeling`; `toxicity without swear words`; `toxic comments framed as rhetorical questions, subtle metaphors and comparisons` that require more real world knowledge/context.
 
-Adding on the above papers from milestone1, this week we look at some more relevant papers that used BERT embeddings and finetuning onto the task of toxic comment classification. 
+Adding on the above papers from milestone1, we looked at some more relevant papers that used BERT embeddings and finetuning onto the task of toxic comment classification. 
 
 - In `"Automatic Toxic Comment Detection Using DNN"` by D'Sa et al.( [link](https://arxiv.org/ftp/arxiv/papers/1911/1911.08395.pdf)) published in 2020, authors tried to apply three different pretrained word representations including BERT onto feature-based CNN and RNN models with an regression-based approach.  A threshold on
 the predicted score is used to decide if the comment is toxic or not.The dataset used is 160k comments from the Wikipedia Detox project, similar to our dataset. A BERT fine-tuning approach by authors achieved 78.2 F1-score, better than feature-based models that used BERT embeddings. Authors also tested `robustness` of the feature-based models by adding a toxic word like 'fuck' or a healthy word like 'love' to each comment of test set, and found out that `model with BERT embedding is least susceptible to word appending attacks`.  
