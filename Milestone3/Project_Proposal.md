@@ -97,7 +97,7 @@ Our baseline model gives us a Macro-F1 Score of `0.86199` after training for 5 e
 
 #### Result on Kaggle test set
 
-We also tested the BERT model performance with the Kaggle test data which contains 153164 comments. Our model reports a lower Macro F1 score than on the test split of our training data at `0.7881645102550523`.
+We also tested the BERT model performance with the Kaggle test data which contains 153164 comments. Our model reports a lower Macro F1 score at `0.7881645102550523`, lower than the nice >0.90 scores we had on the test split of our training data .
 
 We have submitted the predictions to the Kaggle competition which scores differently. It takes in probabilities(sigmoid values) and not the actual 0 and 1 classification labels for the six columns. The evaluation metric is mean column-wise ROC AUC, according to the [competition page](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/overview/evaluation). The graded score is `0.97905` and such a score ranked about 2586 on the public leaderboard among 4500+ entries.
 
@@ -120,7 +120,7 @@ the predicted score is used to decide if the comment is toxic or not.The dataset
 
 ## Evaluation:
 
-We prepare 5,494 sentences in total to evaluate the performance of our model. The classifier is pretty good based on the F1 score and it reaches 0.90 in our test dataset. We processed 10 epochs to train our model and get the best performance on epoch 9.  In order to find the rest of errors we perform the error analysis based on the incorrect predictions. Precision score for non_toxic is 0.96, which is higher than precision for toxic class under six categories which refer to toxic, severe_toxic, obscene , threat, insult and identity_hate. 
+We prepare 5,494 sentences in total to evaluate the performance of our model. The classifier is pretty good based on the F1 score and it reaches 0.90 in our test split. We processed 10 epochs to train our model and get the best performance on epoch 9.  In order to find the rest of errors we perform the error analysis based on the incorrect predictions. Precision score for non_toxic is 0.96, which is higher than precision for toxic class under six categories which refer to toxic, severe_toxic, obscene , threat, insult and identity_hate. 
 
 Besides, based on the classification report below, we can see that precision for non-toxic class is 0.961 and 0.854 for toxic class. The recall is 0.969 for non-toxic but 0.820 for toxic comments. The difference between precision of 0.961 and recall of 0.969 for for non-toxic class is very small. That is to say, our model has better performance on predicting non-toxic comments rather than toxic comments. Please refer to more detailed statistical results [Here](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone2/test_analysis.ipynb). 
 
