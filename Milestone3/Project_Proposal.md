@@ -99,7 +99,7 @@ Our baseline model gives us a Macro-F1 Score of `0.86199` after training for 5 e
 
 We also tested the BERT model performance with the Kaggle test data which contains 153164 comments. Our model reports a lower Macro F1 score than on the test split of our training data at `0.7881645102550523`.
 
-We have submitted the predictions to the Kaggle competition which scores differently. It takes in probabilities(sigmoid values) and not the actual 0 and 1 classification labels for the six columns. The evaluation metric is mean column-wise ROC AUC, according to the [competition page] (https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/overview/evaluation). The graded score is `0.97905` and such a score ranked about 2586 on the public leaderboard among 4500+ entries.
+We have submitted the predictions to the Kaggle competition which scores differently. It takes in probabilities(sigmoid values) and not the actual 0 and 1 classification labels for the six columns. The evaluation metric is mean column-wise ROC AUC, according to the [competition page](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/overview/evaluation). The graded score is `0.97905` and such a score ranked about 2586 on the public leaderboard among 4500+ entries.
 
 
 ## Previous Works
