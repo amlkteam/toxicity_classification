@@ -78,11 +78,11 @@ Num_epochs \learning rate |  2e-05
 3 Epochs | 0.9037581936678408
 4 Epochs | 0.9033286094395687
 
-Our baseline model gives us a Macro-F1 Score of `0.86199` after training for 5 epochs. We have used a batch size of `32` for the training and the default learning rate of `0.001` using the Adam optimizer.
-
 Finetuning results with 6-labels-in-one-go architecture are surprising very similar, always hovering between 0.89 - 0.90, with `best combination of (Batch_size 32, Num_epochs 2 and learning rate 2e-5) at 0.9065`.  
 
 We used `Macro-average version` of F1-score due to imbalanced class nature of data, as the micro-average F1 is too lenient in giving out high scores even when some minority classes score low marks. 
+
+Our baseline model gives us a Macro-F1 Score of `0.86199` after training for 5 epochs. We have used a batch size of `32` for the training and the default learning rate of `0.001` using the Adam optimizer.
 
 ## Previous Works
 
