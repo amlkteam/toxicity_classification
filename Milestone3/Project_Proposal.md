@@ -95,6 +95,13 @@ We used `Macro-average version` of F1-score due to imbalanced class nature of da
 
 Our baseline model gives us a Macro-F1 Score of `0.86199` after training for 5 epochs. We have used a batch size of `32` for the training and the default learning rate of `0.001` using the Adam optimizer.
 
+#### Result on Kaggle test set
+
+We also tested the BERT model performance with the Kaggle test data which contains 153164 comments. Our model reports a lower Macro F1 score than on the test split of our training data at `0.7881645102550523`.
+
+We also sumbit the predictions to the Kaggle competition which scores differently. It takes in probabilities(sigmoid values) and not the actual 0 and 1 classification labels for the six columns. The evaluation metric is mean column-wise ROC AUC, according to the [competition page] (https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/overview/evaluation). The graded score is `0.97905` and such a score ranked about 2586 on the public leaderboard.
+
+
 ## Previous Works
 
 There are a few papers published in recent 3 years which tested different machine learning models on toxic comment classification that can serve as our basis for further exploration.
