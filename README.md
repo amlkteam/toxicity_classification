@@ -13,3 +13,6 @@ Nilan, Claire, Amy
 
 ####  Milestone2 deliverables
 - [Project proposal](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone2/Project_Proposal.md)
+
+####  Milestone3 deliverables
+- [Project proposal](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone3/Project_Proposal.md)
