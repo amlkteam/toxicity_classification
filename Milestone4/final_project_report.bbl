@@ -1,0 +1,26 @@
+\begin{thebibliography}{}
+
+\bibitem[D'Sa et~al., 2019]{d2019towards}
+D'Sa, A.~G., Illina, I., and Fohr, D. (2019).
+\newblock Towards non-toxic landscapes: Automatic toxic comment detection using
+  dnn.
+\newblock {\em arXiv preprint arXiv:1911.08395}.
+
+\bibitem[Khieu and Narwal, 2017]{khieudetecting}
+Khieu, K. and Narwal, N. (2017).
+\newblock Detecting and classifying toxic comments.
+
+\bibitem[Pavlopoulos et~al., 2019]{pavlopoulos2019convai}
+Pavlopoulos, J., Thain, N., Dixon, L., and Androutsopoulos, I. (2019).
+\newblock Convai at semeval-2019 task 6: Offensive language identification and
+  categorization with perspective and bert.
+\newblock In {\em Proceedings of the 13th International Workshop on Semantic
+  Evaluation}, pages 571--576.
+
+\bibitem[van Aken et~al., 2018]{van2018challenges}
+van Aken, B., Risch, J., Krestel, R., and L{\"o}ser, A. (2018).
+\newblock Challenges for toxic comment classification: An in-depth error
+  analysis.
+\newblock {\em arXiv preprint arXiv:1809.07572}.
+
+\end{thebibliography}
