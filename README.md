@@ -21,7 +21,7 @@ Nilan, Claire, Amy
 - [Presentation Slides](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Presentation_slides.pdf)
 - [Final Report](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone4/Jigsaw_Toxic_Comment_Classification.pdf)
 
-###### Codes We used in this project:
+###### Codes we used in this project:
 - [Code to train BERT finetuning model](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone3/train.py)
 - [Code to train baseline LSTM model](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone3/baseline_lstm.py)
 - [Codes for test set result analysis and attention analysis](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/nilan/Milestone2/test_analysis.ipynb)
