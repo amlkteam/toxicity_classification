@@ -22,9 +22,9 @@ Nilan, Claire, Amy
 - [Final Report](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone4/Jigsaw_Toxic_Comment_Classification.pdf)
 
 ###### Codes We used in this project:
-- [code to train BERT finetuning model](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone3/train.py)
-- [code to train baseline LSTM model](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone3/baseline_lstm.py)
-- [codes for test set result analysis and attention analysis](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/nilan/Milestone2/test_analysis.ipynb)
+- [Code to train BERT finetuning model](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone3/train.py)
+- [Code to train baseline LSTM model](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/master/Milestone3/baseline_lstm.py)
+- [Codes for test set result analysis and attention analysis](https://github.ubc.ca/Nilan96/COLX_585_Project/blob/nilan/Milestone2/test_analysis.ipynb)
 
 ###### Dataset we used to train model: 
 - [Jigsaw Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge)
